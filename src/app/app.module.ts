@@ -6,6 +6,14 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { ArtistaComponent } from './components/artista/artista.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
+//RUTAS
+import { RouterModule } from '@angular/router'
+import { RUTAS } from './app.routes';
+
+import { SpotifyService } from './services/spotify.service'
 
 @NgModule({
   declarations: [
@@ -16,9 +24,13 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     NavbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(RUTAS, { useHash:true } )
   ],
-  providers: [],
+  providers: [
+    SpotifyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
